@@ -4,7 +4,7 @@ import { Login } from './views/Login';
 import { Register } from './views/Register';
 import {Dashboard} from './views/Dashboard'
 import { NewReview } from './views/NewReview';
-import { Review } from './views/Review';
+import { Review } from './views/Review/Review';
 
 function App() {
   return (

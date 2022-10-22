@@ -10,7 +10,7 @@ export const NewReview = () => {
    <div>
     <Navbar/>
             <br/>
-            <h1>Agregar Revisión</h1>
+            <h2>Agregar Revisión</h2>
             <Hr/>
     <div className="card-body py-5 px-md-5">
       <div className="row d-flex justify-content-center">

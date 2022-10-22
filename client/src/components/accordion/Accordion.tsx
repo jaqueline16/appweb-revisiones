@@ -12,17 +12,76 @@ export const Accordion = () => {
         Estructura y estilo 
       </button>
     </h2>
-    <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+    <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne">
     <div className="accordion-body">
             <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                 <label className="form-check-label" >
                 Default checkbox
                 </label>
-                <Hr/>
+                
+            </div>
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <label className="form-check-label" >
+                Default checkbox
+                </label>
+                
+            </div>
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <label className="form-check-label" >
+                Default checkbox
+                </label>
+                
+            </div>
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <label className="form-check-label" >
+                Default checkbox
+                </label>
+                
+            </div>
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <label className="form-check-label" >
+                Default checkbox
+                </label>
+                
+            </div>
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <label className="form-check-label" >
+                Default checkbox
+                </label>
+                
+            </div>
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <label className="form-check-label" >
+                Default checkbox
+                </label>
+                
+            </div>
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <label className="form-check-label" >
+                Default checkbox
+                </label>
+                
+            </div>
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <label className="form-check-label" >
+                Default checkbox
+                </label>
+                
             </div>
 
-            <button className="dropdown-item"><i className="bi bi-box-arrow-right"></i>+Agregar comentario</button>
+            <div className='button-option'>
+            <Hr/>
+              <button className="dropdown-item">+Agregar comentario</button>
+            </div>
             
         </div>
     </div>
@@ -33,17 +92,20 @@ export const Accordion = () => {
         Lenguaje
       </button>
     </h2>
-    <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+    <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" >
     <div className="accordion-body">
             <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                 <label className="form-check-label" >
                 Default checkbox
                 </label>
-                <Hr/>
+               
             </div>
 
-            <button className="dropdown-item"><i className="bi bi-box-arrow-right"></i>+Agregar comentario</button>
+            <div className='button-option'>
+            <Hr/>
+              <button className="dropdown-item">+Agregar comentario</button>
+            </div>
             
         </div>
     </div>
@@ -54,17 +116,20 @@ export const Accordion = () => {
         Referencias y citado 
       </button>
     </h2>
-    <div id="flush-collapseThree" className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+    <div id="flush-collapseThree" className="accordion-collapse collapse" aria-labelledby="flush-headingThree">
     <div className="accordion-body">
             <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                 <label className="form-check-label" >
                 Default checkbox
                 </label>
-                <Hr/>
+                
             </div>
 
-            <button className="dropdown-item"><i className="bi bi-box-arrow-right"></i>+Agregar comentario</button>
+            <div className='button-option'>
+            <Hr/>
+              <button className="dropdown-item">+Agregar comentario</button>
+            </div>
             
         </div>
     </div>
@@ -75,18 +140,19 @@ export const Accordion = () => {
         Comentarios y sugerencias
       </button>
     </h2>
-    <div id="flush-collapseFour" className="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+    <div id="flush-collapseFour" className="accordion-collapse collapse" aria-labelledby="flush-headingFour">
     <div className="accordion-body">
             <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                 <label className="form-check-label" >
                 Default checkbox
                 </label>
-                <Hr/>
+               
             </div>
-
-            <button className="dropdown-item"><i className="bi bi-box-arrow-right"></i>+Agregar comentario</button>
-            
+            <div className='button-option'>
+            <Hr/>
+              <button className="dropdown-item">+Agregar comentario</button>
+            </div>
         </div>
     </div>
   </div>

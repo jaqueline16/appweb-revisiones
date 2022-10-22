@@ -22,24 +22,8 @@ code {
   position: relative;
 }
 
-
-
-.review-container{
-  display: flex;
-  height: calc(100vh - 56px);
-}
-
-.pdf-container{
-  background-color: #ccc;
-  width: 60%;
-  height: 100vh;
-
-}
-
-.com-container{
-  background-color: blueviolet;
-  width: 40%;
-  height: 100vh;
+h2{
+  text-align: center;
 }
 
 

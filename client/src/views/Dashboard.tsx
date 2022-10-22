@@ -53,7 +53,7 @@ export const Dashboard = () => {
         <div>
             <Navbar/>
             <br/>
-            <h1>Revisiones</h1>
+            <h2>Revisiones</h2>
             <Hr/>
             <div className='table-responsive container'>
                 <DataTable 
