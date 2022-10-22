@@ -1,6 +1,7 @@
-html, body{
+#root{
   height: 100vh;
 }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -20,6 +21,27 @@ code {
 .form-group{
   position: relative;
 }
+
+
+
+.review-container{
+  display: flex;
+  height: calc(100vh - 56px);
+}
+
+.pdf-container{
+  background-color: #ccc;
+  width: 60%;
+  height: 100vh;
+
+}
+
+.com-container{
+  background-color: blueviolet;
+  width: 40%;
+  height: 100vh;
+}
+
 
 /*.form-control{
   padding: 20px;

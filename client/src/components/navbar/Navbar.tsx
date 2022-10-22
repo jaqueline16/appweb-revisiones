@@ -5,7 +5,7 @@ import '../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export const Navbar = () => {
   return (
-    <div>
+    <>
         <nav className="navbar  navbar-expand-lg navbar-dark bg-primary">
             <div className="container">
             
@@ -38,6 +38,6 @@ export const Navbar = () => {
                 </div>
             </div>
     </nav>
-    </div>
+    </>
   )
 }

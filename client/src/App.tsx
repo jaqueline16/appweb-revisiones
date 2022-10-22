@@ -9,7 +9,7 @@ import { Review } from './views/Review';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <>
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path='/register' element={<Register />} />
@@ -17,7 +17,7 @@ function App() {
           <Route path='/newReview' element={<NewReview />}  />
           <Route path='/review' element={<Review />}  />
         </Routes>
-      </div>
+      </>
     </BrowserRouter>
   );
 }
