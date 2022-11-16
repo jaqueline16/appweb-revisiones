@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateTrRevistaCongresoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('Tr_Usuarios', function (Blueprint $table) {
-            $table->id('id_usuario');
+        Schema::create('Tr_revistaCongreso', function (Blueprint $table) {
+            $table->id('id_revista_congreso');
             $table->string('nombre');
-            $table->string('apellidos');
-            $table->string('nombre_usuario')->unique();
-            $table->string('correo_electronico');
-            $table->string('institucion');
-            $table->string('contraseña');
+            $table->unsignedBigInteger('id_usuario');
             $table->boolean('activo')->default(1);
-            $table->rememberToken();
             $table->timestamps();
-        
+
+            $table->foreign('id_usuario')->references('id_usuario')->on('Tr_Usuarios');
         });
     }
 
@@ -35,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('_tr_revista_congreso');
     }
 }

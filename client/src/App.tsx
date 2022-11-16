@@ -6,6 +6,7 @@ import {Dashboard} from './views/Dashboard'
 import { NewReview } from './views/NewReview';
 import { Review } from './views/Review/Review';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />}  />
           <Route path='/newReview' element={<NewReview />}  />
           <Route path='/review' element={<Review />}  />
+      
         </Routes>
       </>
     </BrowserRouter>

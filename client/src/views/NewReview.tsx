@@ -4,14 +4,16 @@ import { Label } from '../components/Label/Label'
 import { Button } from '../components/button/Button'
 import { Navbar } from '../components/navbar/Navbar'
 import { Hr } from '../components/hr/Hr'
+import { Select } from '../components/select/Select'
 
 export const NewReview = () => {
   return (
-   <div>
+   <>
     <Navbar/>
             <br/>
             <h2>Agregar Revisión</h2>
             <Hr/>
+  <div className="card mx-4">
     <div className="card-body py-5 px-md-5">
       <div className="row d-flex justify-content-center">
         <div className="col-lg-8">
@@ -24,10 +26,7 @@ export const NewReview = () => {
             </div>
             <br />
             <div className="form-group">
-              <Input
-                name={'magazine'}
-                type={'text'}/>
-              <Label>Revista o congreso</Label>
+              <Select/>
             </div>
             <br />
             <div className="form-group">
@@ -43,5 +42,6 @@ export const NewReview = () => {
       </div>
     </div>
     </div>
+    </>
   )
 }

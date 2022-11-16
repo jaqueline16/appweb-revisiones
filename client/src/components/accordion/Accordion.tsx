@@ -80,7 +80,34 @@ export const Accordion = () => {
 
             <div className='button-option'>
             <Hr/>
-              <button className="dropdown-item">+Agregar comentario</button>
+              <button type= "button" 
+              className="dropdown-item" 
+              data-bs-toggle="modal" 
+              data-bs-target="#exampleModal1" 
+              data-bs-whatever="@mdo">+Agregar comentario
+              </button>
+              <div className="modal fade" id="exampleModal1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h1 className="modal-title fs-5" id="exampleModalLabel">Estructura y estilo</h1>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div className="modal-body">
+                        <form>
+                          <div className="mb-3">
+                            <input type="text" className="form-control" id="recipient-name"/>
+                          </div>
+                          
+                        </form>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" className="btn btn-primary">Agregar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
             
         </div>
@@ -104,7 +131,34 @@ export const Accordion = () => {
 
             <div className='button-option'>
             <Hr/>
-              <button className="dropdown-item">+Agregar comentario</button>
+            <button type= "button" 
+              className="dropdown-item" 
+              data-bs-toggle="modal" 
+              data-bs-target="#exampleModal2" 
+              data-bs-whatever="@mdo">+Agregar comentario
+              </button>
+              <div className="modal fade" id="exampleModal2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h1 className="modal-title fs-5" id="exampleModalLabel">Lenguaje</h1>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div className="modal-body">
+                        <form>
+                          <div className="mb-3">
+                            <input type="text" className="form-control" id="recipient-name"/>
+                          </div>
+                          
+                        </form>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" className="btn btn-primary">Agregar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
             
         </div>
@@ -128,7 +182,34 @@ export const Accordion = () => {
 
             <div className='button-option'>
             <Hr/>
-              <button className="dropdown-item">+Agregar comentario</button>
+            <button type= "button" 
+              className="dropdown-item" 
+              data-bs-toggle="modal" 
+              data-bs-target="#exampleModal3" 
+              data-bs-whatever="@mdo">+Agregar comentario
+              </button>
+              <div className="modal fade" id="exampleModal3" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h1 className="modal-title fs-5" id="exampleModalLabel">Referencias y citado</h1>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div className="modal-body">
+                        <form>
+                          <div className="mb-3">
+                            <input type="text" className="form-control" id="recipient-name"/>
+                          </div>
+                          
+                        </form>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" className="btn btn-primary">Agregar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
             
         </div>
@@ -151,7 +232,34 @@ export const Accordion = () => {
             </div>
             <div className='button-option'>
             <Hr/>
-              <button className="dropdown-item">+Agregar comentario</button>
+            <button type= "button" 
+              className="dropdown-item" 
+              data-bs-toggle="modal" 
+              data-bs-target="#exampleModal4" 
+              data-bs-whatever="@mdo">+Agregar comentario
+              </button>
+              <div className="modal fade" id="exampleModal4" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h1 className="modal-title fs-5" id="exampleModalLabel">Comentarios y sugerencias</h1>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div className="modal-body">
+                        <form>
+                          <div className="mb-3">
+                            <input type="text" className="form-control" id="recipient-name"/>
+                          </div>
+                          
+                        </form>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" className="btn btn-primary">Agregar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
         </div>
     </div>
@@ -159,3 +267,4 @@ export const Accordion = () => {
 </div>
   )
 }
+

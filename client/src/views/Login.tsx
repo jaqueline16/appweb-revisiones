@@ -46,15 +46,15 @@ export const Login = () => {
               <h2 className="fw-bold mb-5">Ingresar al Sistema</h2>
               <form onSubmit={Login} className="pb-3">
 
-                <div className="form-group">
+              <div className="form-group">
                   <Input
                     name={'userName'}
                     type={'text'}
-                    value={data.userName}
+                    value={data?.userName}
                     onChange={handleChange} />
-                  <Label> Nombre de usuario</Label>
+                  <Label>Nombre de usuario</Label>
                 </div>
-                <br />
+                <br/>
                 <div className="form-group">
                   <Input
                     name={'password'}

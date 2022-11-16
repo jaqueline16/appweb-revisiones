@@ -43,3 +43,38 @@
     background-color: #fff;
   }
   
+
+  table{
+    width: 100%;
+    font-size: small;
+    align-items: center;
+    margin-top:15%;
+  }
+
+  td{
+    align-items: center;
+    padding:3%;
+    text-align: justify;
+  }
+
+  th{
+    font-size: x-small;
+    text-align: center;
+  }
+
+
+  .pregunta{
+    width: 50%;
+    font-size: small;
+  }
+
+  .columna{
+    width: 12.5%;
+  }
+
+  .p-idioma{
+    font-size: small;
+    text-align: justify;
+    margin: 2%;
+
+  }

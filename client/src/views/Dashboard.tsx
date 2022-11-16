@@ -50,7 +50,7 @@ export const Dashboard = () => {
  
     return (
         
-        <div>
+        <>
             <Navbar/>
             <br/>
             <h2>Revisiones</h2>
@@ -75,7 +75,7 @@ export const Dashboard = () => {
                 />
                 
             </div>
-        </div>
+        </>
         
     )
 }

@@ -5,7 +5,7 @@ import React from 'react';
 interface IFileInput {
     className?: string;
     key?: React.Key;
-    type: 'text' | 'password' | 'email' | 'file' | 'color' | 'number' | 'search' | 'tel' | 'time' | 'url';
+    type: 'file' | 'url';
     placeholder?: string;
     value?: string;
     disabled?: boolean;
