@@ -32,7 +32,7 @@ Route::post('/', [UserController::class, 'login']);
 Route::prefix('Reviews')->group(function(){
 Route::get('/show', [ReviewController::class, 'show']);
 Route::post('/addReview', [ReviewController::class, 'store']);
-Route::post('/uploadFiles/{id_revision}', [ReviewController::class, 'uploadFiles']);
+Route::post('/uploadFiles', [ReviewController::class, 'uploadFiles']);
 
 });
 

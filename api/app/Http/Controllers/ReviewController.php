@@ -7,9 +7,27 @@ use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator; 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class ReviewController extends Controller
 {
+    public $response;
+    public $responseCode;
+    public $path_images_base64;
+
+    public function __construct()
+    {
+        $this->response = array(
+            'error' => true,
+            'data' => null,
+            'message' => null
+        );
+        $this->responseCode = 404;
+        $this->path_images_base64 = '';
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -39,21 +57,43 @@ class ReviewController extends Controller
             return response()->json($validateData->errors(),400);
         }
         else{
-            $revision=new Review();
-            $revision->fecha_revision=$fecha = Carbon::now();
-            $revision->nombre_articulo=$request->nombre_articulo;
-            $revision->id_revista_congreso=$request->id_revista_congreso;
-            $revision->id_usuario=$request->id_usuario;
-            $revision->save();
-    
-            return response()->json([
-                //el estatus 201 hace referencia a algo creado 
-                "status"=>201,
-                "message"=>"Revisión registrada correctamente"
-            ]);
+           
+            try {
+            DB::transaction(function() use ($request) {
+             //Crear un nuevo registro
+                $revision=new Review();
+                //Colocar los datos al guardar 
+                $revision->fecha_revision=$fecha = Carbon::now();
+                $revision->nombre_articulo=$request->nombre_articulo;
+                $revision->id_revista_congreso=$request->id_revista_congreso;
+                $revision->id_usuario=$request->id_usuario;
+                //Guardar los datos en la BD 
+                $revision->save(); 
+                //asignar el ultimo id guardado a una variable
+                $idRecienGuardado=$revision->id;
+
+                //var_dump($idRecienGuardado);
+                //$pruebaruta='prueba';
+
+                
+                $archivoRevision= new File(); 
+                $archivoRevision->archivo=Storage::disk('files')->url('63758d4e7c01b.pdf');
+                $archivoRevision->id_revision=$idRecienGuardado; 
+                $archivoRevision->save(); 
+           
+            });
+            
+            } catch (\Exception $e) {
+            return response()->json(['message' => 'Error']);
+            }
+            
+            return response()->json(['message' => 'Revisión registrada correctamente']);
+
+            
         }
 
     }
+
 
    
 
@@ -82,22 +122,8 @@ class ReviewController extends Controller
      */
 
     
-    public $response;
-    public $responseCode;
-    public $path_images_base64;
-
-    public function __construct()
-    {
-        $this->response = array(
-            'error' => true,
-            'data' => null,
-            'message' => null
-        );
-        $this->responseCode = 404;
-        $this->path_images_base64 = '';
-    }
-
-    public function uploadFiles(Request $request, $id_revision)
+    
+    public function uploadFiles(Request $request)
     {
         //Ingresa en una variable el nombre del campo en el que está cargando el archivo 
         $files = $request->file('files');
@@ -109,7 +135,7 @@ class ReviewController extends Controller
         if (!$files || $validate->fails()) {
             $this->response['message'] = $validate->errors();
         } else {
-            // $data = [];
+            $data = [];
 
             foreach ($files as $file) {
                 //obtiene el nombre original 
@@ -128,7 +154,7 @@ class ReviewController extends Controller
 
                 self::saveFileServer($content, strtolower($extension), $imageName);
             }
-            $this->response['data'] = "Imagen guardada";
+            $this->response['data'] = "Archivo guardado";
             $this->response['error'] = false;
             $this->responseCode = 200;
         }
@@ -137,12 +163,8 @@ class ReviewController extends Controller
     
     private function saveFileServer($file, $folder, $imageName)
     {
-        /*En lugar de guardar los archivos por tipo los pretendo guardar por usuario, es decir
-        ir creando una carpeta por cada id de usuario*/
 
-        $path= ''; 
-
-        /*$path = '';
+        $path = '';
         if ($folder == 'png' || $folder == 'jpeg' || $folder == 'jpg' || $folder == 'gif') {
             $path = 'img/' . $folder;
         } elseif ($folder == 'pdf' || $folder == 'doc' || $folder == 'docx' || $folder == 'xls' || $folder == 'xlsx') {
@@ -151,7 +173,7 @@ class ReviewController extends Controller
         var_dump($path);
         var_dump($imageName);
         var_dump($path);
-        Storage::disk($path)->put($imageName, $file);*/
+        Storage::disk("files")->put($imageName, $file); 
 
     }
 

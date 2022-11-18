@@ -13,6 +13,7 @@ class Review extends Model
 
     //colocar los datos de la tabla que vamos a manipular desde el controlador 
     protected $fillabe=[
+        'id_revision',
         'nombre_articulo',
         'id_revista_congreso',
         'id_usuario',
