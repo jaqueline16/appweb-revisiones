@@ -124,7 +124,7 @@ export const Accordion = () => {
             <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                 <label className="form-check-label" >
-                Default checkbox
+                Comentario 1 
                 </label>
                
             </div>

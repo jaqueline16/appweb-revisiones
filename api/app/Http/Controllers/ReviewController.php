@@ -45,7 +45,7 @@ class ReviewController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function store(Request $request)
+    public function store(Request $request, $ultimoArchivoSubido)
     {
         $validateData = Validator::make($request->all(),[
             'nombre_articulo'=>'required|string',
@@ -75,9 +75,11 @@ class ReviewController extends Controller
                 //var_dump($idRecienGuardado);
                 //$pruebaruta='prueba';
 
-                
+                //nombre, extension y archivo 
+                //
+
                 $archivoRevision= new File(); 
-                $archivoRevision->archivo=Storage::disk('files')->url('63758d4e7c01b.pdf');
+                $archivoRevision->archivo=Storage::disk('files')->get($ultimoArchivoSubido);
                 $archivoRevision->id_revision=$idRecienGuardado; 
                 $archivoRevision->save(); 
            
@@ -174,6 +176,7 @@ class ReviewController extends Controller
         var_dump($imageName);
         var_dump($path);
         Storage::disk("files")->put($imageName, $file); 
+    
 
     }
 

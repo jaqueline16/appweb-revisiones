@@ -56,7 +56,7 @@ class McController extends Controller
      */
     public function show(Mc $review)
     {
-        $id_usuario=2;
+        $id_usuario=1;
         $response = Mc::where('id_usuario',$id_usuario)->get();
         return $response;
     }
