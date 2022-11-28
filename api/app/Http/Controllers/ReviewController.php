@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Codedge\Fpdf\Fpdf\Fpdf;
 use App\Models\Review;
 use App\Models\File;
 use Illuminate\Http\Request;
@@ -16,6 +17,8 @@ class ReviewController extends Controller
     public $responseCode;
     public $path_images_base64;
 
+    protected $fpdf;
+
     public function __construct()
     {
         $this->response = array(
@@ -25,6 +28,10 @@ class ReviewController extends Controller
         );
         $this->responseCode = 404;
         $this->path_images_base64 = '';
+
+        $this->fpdf = new Fpdf('P','mm','A4');
+    
+
     }
 
     
@@ -77,7 +84,8 @@ class ReviewController extends Controller
 
                 //nombre, extension y archivo 
                 //
-
+                $ultimoArchivoSubido=$request('archivo'); //mandarlo  directo del input
+                var_dump($variablePrueba);
                 $archivoRevision= new File(); 
                 $archivoRevision->archivo=Storage::disk('files')->get($ultimoArchivoSubido);
                 $archivoRevision->id_revision=$idRecienGuardado; 
@@ -200,5 +208,104 @@ class ReviewController extends Controller
         }
         return response()->json($this->response, $this->responseCode);
     }
+
+
+
+
+    public function pdf() 
+    {
+        
+
+            function Header()
+                {
+    
+                    // Arial bold 15
+                    $this->SetFont('Arial','B',10);
+                    $this->Cell(80);
+                    $this->Ln(10);
+    
+                }
+
+                // Pie de página
+                function Footer()
+                {
+                    // Posición: a 1,5 cm del final
+                    $this->SetY(-15);
+                    // Arial italic 8
+                    $this->SetFont('Arial','I',8);
+                    // Número de página
+                // $this->Cell(0,10,utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
+                
+                    
+                }
+             
+                
+
+                $this->fpdf->AliasNbPages();
+                $this->fpdf->AddPage();
+                $this->fpdf->SetFont('Arial','',10);
+
+                $this->fpdf->Cell(190,17,utf8_decode('Paper: "Article Title"'),0,1,'C',0); //borde, salto delinea, centrado, que no tenga relleno
+                $this->fpdf->Cell(190,7,utf8_decode('Review comments:'),0,1,'L',0);
+                //después viene un ciclo while para que agregue una celda por cada comentario 
+                $this->fpdf->Cell(190,7,utf8_decode('-Example: Comment #1'),0,1,'L',0);
+                $this->fpdf->AddPage();
+
+                $this->fpdf->Cell(190,17,utf8_decode('Abstract'),0,1,'C',0);
+                $this->fpdf->Cell(190,7,utf8_decode('English languaje and style:'),0,1,'L',0);
+                $this->fpdf->Cell(190,7,utf8_decode('( )Extensive editing of English language and style required'),0,1,'L',0);
+                $this->fpdf->Cell(190,7,utf8_decode('( )Moderate English changes required'),0,1,'L',0);
+                $this->fpdf->Cell(190,7,utf8_decode('( )English language and style are fine/minor spell check required'),0,1,'L',0);
+                $this->fpdf->Cell(190,7,utf8_decode('( )I do not feel qualified to judge about the English language and style'),0,1,'L',0);
+                $this->fpdf->Ln(7);
+                $this->fpdf->Cell(80,5,utf8_decode(''),0,0,'L',false);
+                $this->fpdf->Cell(20,5,utf8_decode('Yes'),0,0,'C',false);
+                $this->fpdf->Cell(30,5,utf8_decode('Can be improved'),0,0,'C',false);
+                $this->fpdf->Cell(30,5,utf8_decode('Must be improved'),0,0,'C',false);
+                $this->fpdf->Cell(30,5,utf8_decode('Not applicable'),0,1,'C',false);
+                $this->fpdf->MultiCell(80,5,utf8_decode('Does the introduction provide sufficient background and include all relevant references?'),0,'J',false);
+                $this->fpdf->SetY(74);
+                $this->fpdf->SetX(90);
+                $this->fpdf->Cell(20,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,1,'C',0);
+                $this->fpdf->MultiCell(80,5,utf8_decode('Are all the cited references relevant to the research? '),0,'J',false);
+                $this->fpdf->SetY(84);
+                $this->fpdf->SetX(90);
+                $this->fpdf->Cell(20,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,1,'C',0);
+
+                $this->fpdf->Cell(80,10,utf8_decode('Is the research design appropriate?'),0,0,'J',false);
+                $this->fpdf->Cell(20,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,1,'C',0);
+                $this->fpdf->Cell(80,10,utf8_decode('Are the methods adequately described? '),0,0,'J',false);
+                $this->fpdf->Cell(20,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,1,'C',0);
+                $this->fpdf->Cell(80,10,utf8_decode('Are the results clearly presented?'),0,0,'J',false);
+                $this->fpdf->Cell(20,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,1,'C',0);
+                $this->fpdf->Cell(80,10,utf8_decode('Are the conclusions supported by the results?'),0,0,'J',false);
+                $this->fpdf->Cell(20,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,0,'C',0);
+                $this->fpdf->Cell(30,10,utf8_decode('( )'),0,1,'C',0);
+                
+
+                
+
+                $this->fpdf->Output();
+                exit;
+    }
+
+
 
 }

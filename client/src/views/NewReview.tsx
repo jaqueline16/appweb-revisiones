@@ -5,8 +5,27 @@ import { Button } from '../components/button/Button'
 import { Navbar } from '../components/navbar/Navbar'
 import { Hr } from '../components/hr/Hr'
 import { Select } from '../components/select/Select'
+import {useState} from 'react';
 
 export const NewReview = () => {
+
+  const [file, setFileName] = useState('');
+
+  function prueba(){
+    console.log('asd');
+    alert('asdsdads');
+  }
+  const Auth = async () => {
+
+    try {
+        console.log("asd");
+        var file = document.getElementById('file');
+        alert(file);
+    } catch (error) {
+
+    }
+}
+
   return (
    <>
     <Navbar/>
@@ -17,7 +36,7 @@ export const NewReview = () => {
     <div className="card-body py-5 px-md-5">
       <div className="row d-flex justify-content-center">
         <div className="col-lg-8">
-          <form className="pb-3">
+          <form className="pb-3" onSubmit={Auth}>
             <div className="form-group">
               <Input
                 name={'title'}
@@ -32,12 +51,14 @@ export const NewReview = () => {
             <div className="form-group">
               <Input
                 name={'file'}
-                type={'file'}/>
+                type={'file'}
+                id={'file'}
+                onChange={(e)=> setFileName(e.target.value)}/>
             </div>
             <br />
             <Button type='submit'>Guardar</Button>
           </form>
-         
+         <Button type='button' onClick={prueba}>Prueba</Button>
         </div>
       </div>
     </div>

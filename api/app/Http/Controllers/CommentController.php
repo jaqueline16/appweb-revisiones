@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator; 
+use Carbon\Carbon;
 
 class CommentController extends Controller
 {
@@ -39,6 +40,7 @@ class CommentController extends Controller
         else{
             $comentario=new Comment();
             $comentario->comentario=$request->comentario;
+            $comentario->fecha_comentario=$fecha = Carbon::now();
             $comentario->id_revision=$request->id_revision;
             $comentario->id_usuario=$request->id_usuario;
             $comentario->id_categoria=$request->id_categoria;

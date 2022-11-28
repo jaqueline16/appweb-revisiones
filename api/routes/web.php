@@ -33,6 +33,7 @@ Route::prefix('Reviews')->group(function(){
 Route::get('/show', [ReviewController::class, 'show']);
 Route::post('/addReview', [ReviewController::class, 'store']);
 Route::post('/uploadFiles', [ReviewController::class, 'uploadFiles']);
+Route::get('/pdf', [ReviewController::class, 'pdf']);
 
 });
 
