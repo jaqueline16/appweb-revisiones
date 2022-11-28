@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
@@ -10,7 +10,8 @@ import authService from '../services/Auth.service';
 import { Button } from '../components/button/Button';
 import { Input } from '../components/input/Input';
 import { Label } from '../components/Label/Label';
-import { ILogin } from '../models/Auth.model';
+import { ILogin, IRegister } from '../models/Auth.model';
+import reviewerService from '../services/Reviewer.service';
 
 export const Login = () => {
 
@@ -19,6 +20,23 @@ export const Login = () => {
     userName: "",
     password: ""
   })
+
+  const [registro, setRegistro] = useState<IRegister>({name:"pp", email:"aa", password:"ss", surname: "", userName: "", confirmPassword:"", institution:""})
+
+  // setRegistro({...registro, name:"", email:"", password:"", surname: "", userName: "", confirmPassword:"", institution:""});
+  setRegistro({...registro, name:""});
+
+  const funcion = async () => {
+    await reviewerService.obtenerRevisores().then((response) => {
+      if (response.status === 200) {
+        console.log(response.data);
+      } else if (response.status === 404) {
+        console.log("Ruta no encontrada");
+      }
+    }).catch(ex => {
+      console.log(ex.message)
+    })
+  }
 
   const Login = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +50,13 @@ export const Login = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setData({ ...data, [e.target.name]: e.target.value });
+
+  const [refrescar, setRefrescar] = useState(true)
+  useEffect(() => {
+    /* Bloque de código a ejecutar por lo menos una vez */
+    funcion();
+  }, [refrescar])
+
 
   return (
     <section className="text-center">
@@ -50,9 +75,9 @@ export const Login = () => {
                   <Input
                     name={'userName'}
                     type={'text'}
-                    value={data.userName}
+                    value={data?.userName}
                     onChange={handleChange} />
-                  <Label> Nombre de usuario</Label>
+                  <Label>Nombre de usuario</Label>
                 </div>
                 <br />
                 <div className="form-group">
